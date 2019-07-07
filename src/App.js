@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 // import Foundation from 'react-foundation';
 import SearchForm from './components/SearchForm.js';
 import FilterCategories from './components/FilterCategories.js';
@@ -21,6 +20,15 @@ class App extends Component {
       // error: false,
     }
   }
+
+  // watches user input and updates state
+  handleChange = (e, name) => {
+    this.setState({
+      [name]: e
+    })
+  }
+
+  
 
 // user types in their country and city in form field
 // if not valid type (letters only, no num), return error
