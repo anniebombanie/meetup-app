@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
-import Foundation from 'react-foundation';
-import SearchForm from 'components/SearchForm.js';
-import FilterCategories from 'components/FilterCategories.js';
-import DisplayResults from 'components/DisplayResults.js';
-import Footer from 'components/Footer.js';
+// import Foundation from 'react-foundation';
+import SearchForm from './components/SearchForm.js';
+import FilterCategories from './components/FilterCategories.js';
+import DisplayResults from './components/DisplayResults.js';
+import Footer from './components/Footer.js';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      country: "",
-      city: "",
-      allEvents: [],
-      eventCategories: "",
-      userCategory: "",
-      isLoading: true,
-      displayResults: false,
-      categoryDropdown: "",
-      error: false,
+      // country: "",
+      // city: "",
+      // allEvents: [],
+      // eventCategories: "",
+      // userCategory: "",
+      // isLoading: true,
+      // displayResults: false,
+      // categoryDropdown: "",
+      // error: false,
     }
   }
 
