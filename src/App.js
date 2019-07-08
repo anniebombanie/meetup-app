@@ -55,9 +55,9 @@ class App extends Component {
             <SearchForm accessToken={this.state.accessToken} />
             <FilterCategories />
             <DisplayResults />
-            <Footer />
           </Fragment>
         )}
+        <Footer />
       </Fragment>
     );
   }
