@@ -8,14 +8,15 @@
 // --- handleChange to watch what's being typed
 // --- save search string as state in SearchForm.js
 // 4. If nothing is typed and user hits submit, don't make API call and display error1
-// --- error1 stored in state in SearchForm.js
+// --- error1 stored as state in SearchForm.js
 // 5. If something is typed, make API call but if there are no results matching the search param (ie. []= empty or ERROR), display error2
-// --- conditionally render DisplayResults.js but with error2 (stored in state in DisplayResults)
+// --- conditionally render DisplayResults.js but with error2 (stored as state in DisplayResults)
 // --- store result of API call as state in App.js to pass to ResultCard.js
 // 6. If no errors, displays results (as cards) on page
-// --- Filter through API data and pick out selected info needed and save as state= name/date/time/location/img
-// --- if no event img, display group img, if no img at all, display placeholder
-// --- Map through and
+// --- In ResultCard.js, map through API data and filter to get info needed and save as state= name/date/time/location/img
+// --- (NB: Images = separate endpoint requiring id & urlname)
+// --- If no event img, display group img, if no img at all, display placeholder
+// ---
 // --- DisplayResults.js renders all the cards
 // OTHER
 // Persisting the token and detecting expired tokens/refreshing the token
@@ -24,8 +25,7 @@ import React, { Component, Fragment } from 'react';
 // import Foundation from 'react-foundation';
 import Header from './components/Header.js';
 import Login from './components/Login.js';
-import SearchForm from './components/SearchForm.js';
-import DisplayResults from './components/DisplayResults.js';
+import MainContent from './components/MainContent.js';
 import Footer from './components/Footer.js';
 
 class App extends Component {
@@ -59,10 +59,7 @@ class App extends Component {
         {!this.state.isLoggedIn ? (
           <Login handleLogin={this.handleLogin} />
         ) : (
-          <Fragment>
-            <SearchForm accessToken={this.state.accessToken} />
-            <DisplayResults />
-          </Fragment>
+          <MainContent accessToken={this.state.accessToken} />
         )}
         <Footer />
       </Fragment>
