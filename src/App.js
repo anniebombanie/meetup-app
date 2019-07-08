@@ -1,4 +1,12 @@
-import React, { Component } from 'react';
+// user types in their country and city in form field
+// if not valid type (letters only, no num), return error
+// clear error once valid
+// if tries to press submit with incorrect input, show error
+// if correct, make API call and return categories of events listed in the search param
+// user chooses category from dropdown and hits submits
+// makes second api call and list all events matching
+
+import React, { Component, Fragment } from 'react';
 // import Foundation from 'react-foundation';
 import Header from './components/Header.js';
 import Login from './components/Login.js';
@@ -11,37 +19,35 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      loggedIn: false,
+      accessToken: null,
+      isLoggedIn: false,
       isLoading: true,
-      error: false,
     };
   }
 
-  // watches user input and updates state
-  handleChange = (e, name) => {
+  // method to pass to Login.js
+  handleLogin = access_token => {
     this.setState({
-      [name]: e,
+      isLoggedIn: true,
+      accessToken: access_token,
     });
   };
 
-  // user types in their country and city in form field
-  // if not valid type (letters only, no num), return error
-  // clear error once valid
-  // if tries to press submit with incorrect input, show error
-  // if correct, make API call and return categories of events listed in the search param
-  // user chooses category from dropdown and hits submits
-  // makes second api call and list all events matching
-
   render() {
     return (
-      <div className="App">
+      <Fragment>
         <Header />
-        <Login />
-        <SearchForm />
-        <FilterCategories />
-        <DisplayResults />
-        <Footer />
-      </div>
+        {!this.state.isLoggedIn ? (
+          <Login handleLogin={this.handleLogin} />
+        ) : (
+          <Fragment>
+            <SearchForm accessToken={this.state.accessToken} />
+            <FilterCategories />
+            <DisplayResults />
+            <Footer />
+          </Fragment>
+        )}
+      </Fragment>
     );
   }
 }

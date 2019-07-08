@@ -4,12 +4,12 @@ import 'foundation-sites/dist/css/foundation.min.css';
 import { Grid, Cell, Button, Colors } from 'react-foundation';
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      accessToken: null,
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+
+  //   };
+  // }
 
   login = async () => {
     //oAuth key requested from meetup.com specifically for this app
@@ -20,14 +20,14 @@ class Login extends Component {
 
     // popback kudos to Jeffrey B [https://www.npmjs.com/package/popback]
     // Opens login in a popup(or tab) and once that popup is redirected back to redirectUri, auto-closes and takes the data passed to it.
-    const { access_token } = await popback({
+    const param = await popback({
       width: 600,
       height: 600,
       url: `https://secure.meetup.com/oauth2/authorize?client_id=${key}&response_type=token&redirect_uri=${redirectUri}`,
     });
-    this.setState({
-      accessToken: access_token,
-    });
+    // pass param.access_token up to App.js
+    // need param because otherwise, will return key-value pair instead of just value
+    this.props.handleLogin(param.access_token);
   };
 
   render() {
@@ -41,13 +41,21 @@ class Login extends Component {
             </strong>
           </p>
           <p>
-            Please login below and if you don't have one, you'll be prompted to
-            create one to continue. (This will open up a new tab or popup
-            depending on your browser.)
+            Please login below and if you don't have an account, you'll be
+            prompted to create one to continue. (This will open up a new tab or
+            popup depending on your browser.)
           </p>
-          <button className="button" onClick={this.login}>
-            LogIn via Meetup.com
-          </button>
+          <form>
+            <button
+              className="button"
+              onClick={() => {
+                this.login();
+                this.props.handleLogin();
+              }}
+            >
+              LogIn via Meetup.com
+            </button>
+          </form>
         </Cell>
       </Grid>
     );
