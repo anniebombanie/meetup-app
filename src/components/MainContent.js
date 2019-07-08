@@ -20,6 +20,7 @@ class MainContent extends Component {
       // changes is loading to true
       isLoading: true,
     });
+    console.log(data);
   };
 
   render() {

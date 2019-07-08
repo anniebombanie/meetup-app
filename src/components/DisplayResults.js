@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import EventCard from './EventCard';
 
 class DisplayResults extends Component {
   constructor() {
     super();
     this.state = {
-      singleEventData: {},
+      event: [],
       hasErrorBadInput: false,
-      // error: false,
     };
   }
 
-  //display result maps through data and filter for correct info
+  filterAll;
+  // map through data and filter for correct info
   //store in state here
   // passes info to EventCard
   // showIsLoading () => {
@@ -21,17 +22,19 @@ class DisplayResults extends Component {
   // }
 
   render() {
-    return (
-      <div>
-        <p>Display Results</p>
-        {/* if(this.props.results.length === 0) {
-          // do something else? maybe loader/error/empty state
-        }
-        return this.props.results.map((data) => {
-          return <EventCard data={data} key={someUniqKeyFromData} />
-        }) */}
-      </div>
-    );
+    if (this.props.allEventsData.length === 0) {
+      return (
+        <p>
+          Sorry, your search didn't return any events. Please try a different
+          search.
+        </p>
+      );
+    }
+    return this.props.results.map(data => {
+      return (
+        <EventCard event={this.state.event} eventID={this.state.event.id} />
+      );
+    });
   }
 }
 
