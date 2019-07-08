@@ -26,25 +26,19 @@ class SearchForm extends Component {
     console.log(`in handleChange`, e.target.name, e.target.value, 'OK');
   };
 
-  getEvents = async () => {
-    console.log(`getEvents called`);
-    console.log('in getEvents', this.props.accessToken, this.state.search);
-
+  getEventsData = async () => {
     const res = await axios.get(
       `https://api.meetup.com/find/upcoming_events?access_token=${this.props.accessToken}&text=${this.state.search}`
     );
-    console.log(res, res.data.events);
-    return;
+    const resData = res.data.events;
+    this.props.handleOnSubmit(resData);
   };
 
   onSubmit = e => {
+    // prevent default refresh
     e.preventDefault();
-
-    // const accessToken = this.props.accessToken;
-    // const search = this.state.search;
-    // console.log('onSubmit', accessToken, search);
-
-    this.getEvents();
+    // make API call
+    this.getEventsData();
   };
 
   // SubmitButton = () => {
@@ -65,7 +59,7 @@ class SearchForm extends Component {
                 type="text"
                 name="search"
                 required="required"
-                placeholder="ie. coffee, design, boardgames"
+                placeholder="ie. food, design, boardgames"
                 onChange={this.handleChange}
                 value={this.state.search}
               />

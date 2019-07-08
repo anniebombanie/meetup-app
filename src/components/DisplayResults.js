@@ -10,10 +10,18 @@ class DisplayResults extends Component {
     };
   }
 
+  map;
+
   render() {
     return (
       <div>
         <p>Display Results</p>
+        {/* if(this.props.results.length === 0) {
+          // do something else? maybe loader/error/empty state
+        }
+        return this.props.results.map((data) => {
+          return <EventCard data={data} key={someUniqKeyFromData} />
+        }) */}
       </div>
     );
   }
