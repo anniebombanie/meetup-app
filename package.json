@@ -4,7 +4,10 @@
   "private": true,
   "homepage": "https://anniebombanie.github.io/meetup-search/",
   "dependencies": {
+    "axios": "^0.19.0",
+    "foundation-sites": "^6.5.3",
     "gh-pages": "^2.0.1",
+    "popback": "^0.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-foundation": "^0.9.6",
@@ -18,9 +21,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -32,5 +32,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2"
   }
 }
