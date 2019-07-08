@@ -23,36 +23,28 @@ class SearchForm extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    console.log(e.target.name, e.target.value);
+    console.log(`in handleChange`, e.target.name, e.target.value, 'OK');
   };
 
-  getEvents = (accessToken, search, data) => {
-    console.log('in getEvents');
+  getEvents = async () => {
+    console.log(`getEvents called`);
+    console.log('in getEvents', this.props.accessToken, this.state.search);
 
-    accessToken = this.props.accessToken;
-    const searchString = this.state.search;
-
-    console.log(accessToken, searchString);
-
-    axios.get(
-      console.log('in axios'),
-      `https://api.meetup.com/find/upcoming_events?access_token=${accessToken}&text=${searchString}`
+    const param = await axios.get(
+      `https://api.meetup.com/find/upcoming_events?access_token=${this.props.accessToken}&text=${this.state.search}`
     );
-    // return data.events;
+    console.log(param.data.events);
+    return;
   };
 
-  const param = await Axios.get(
-    `https://api.meetup.com/find/upcoming_events?access_token=${access_token}&text=coffee`
-  );
-
-  return param.data.events;
-}
-
-
-  onSubmit = (e, accessToken, search) => {
+  onSubmit = e => {
     e.preventDefault();
-    console.log(accessToken, search);
-    this.getEvents(accessToken, search);
+
+    // const accessToken = this.props.accessToken;
+    // const search = this.state.search;
+    // console.log('onSubmit', accessToken, search);
+
+    this.getEvents();
   };
 
   // SubmitButton = () => {
