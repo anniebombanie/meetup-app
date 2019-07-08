@@ -4,13 +4,21 @@ class DisplayResults extends Component {
   constructor() {
     super();
     this.state = {
-      isLoading: true,
+      singleEventData: {},
       hasErrorBadInput: false,
       // error: false,
     };
   }
 
-  map;
+  //display result maps through data and filter for correct info
+  //store in state here
+  // passes info to EventCard
+  // showIsLoading () => {
+  //   // if there's nothing returned from the data...
+  //   if (this.props.allEventsData === 0) {
+  //     <p></p>
+  //   }
+  // }
 
   render() {
     return (

@@ -7,17 +7,19 @@ class MainContent extends Component {
     super();
     this.state = {
       allEventsData: [],
-      isLoading: true,
+      isLoading: false,
       hasErrorBadInput: false,
     };
   }
 
-  // pass this method to SearchForm so API data can get sent up here
+  // sets states when search button is clicked
   handleOnSubmit = data => {
     this.setState({
+      // stores API data
       allEventsData: data,
+      // changes is loading to true
+      isLoading: true,
     });
-    console.log('handleOnSubmit', data);
   };
 
   render() {
@@ -27,7 +29,9 @@ class MainContent extends Component {
           handleOnSubmit={this.handleOnSubmit}
           accessToken={this.props.accessToken}
         />
-        <DisplayResults allEvents={this.state.allEventsData} />
+        {this.state.isLoading && (
+          <DisplayResults allEvents={this.state.allEventsData} />
+        )}
       </div>
     );
   }

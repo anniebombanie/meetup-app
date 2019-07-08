@@ -18,26 +18,26 @@ class SearchForm extends Component {
     };
   }
 
-  // watches user input for search term and updates state
+  // reusable method to watch user input and update state
   handleChange = e => {
     this.setState({
+      // in this instance, when user types something in "search", the value they type in is stored in state
       [e.target.name]: e.target.value,
     });
-    console.log(`in handleChange`, e.target.name, e.target.value, 'OK');
   };
 
+  // make API call
   getEventsData = async () => {
     const res = await axios.get(
       `https://api.meetup.com/find/upcoming_events?access_token=${this.props.accessToken}&text=${this.state.search}`
     );
-    const resData = res.data.events;
-    this.props.handleOnSubmit(resData);
+    // pass response data to handleOnSubmit to store in MainContent.js
+    this.props.handleOnSubmit(res.data.events);
   };
 
   onSubmit = e => {
     // prevent default refresh
     e.preventDefault();
-    // make API call
     this.getEventsData();
   };
 
