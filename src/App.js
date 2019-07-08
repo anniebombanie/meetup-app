@@ -3,10 +3,10 @@
 // --- SearchForm.js needs access to this token to make an API call.
 // --- So store access_token as state in App.js so can send to SearchForm.js later
 // --- When Login.js gets access_token, send this back to App.js + set isLoggedIn to true in App.js
-// 2. Once logged in, conditionally hide login section disappears and show search bar
+// 2. Once logged in, conditionally hide login section disappears and show maincontent
 // 3. User types in search param
 // --- handleChange to watch what's being typed
-// --- save search string as state in SearchForm.js
+// --- save search string as state in MainContent.js
 // 4. If nothing is typed and user hits submit, don't make API call and display error1
 // --- error1 stored as state in SearchForm.js
 // 5. If something is typed, make API call but if there are no results matching the search param (ie. []= empty or ERROR), display error2
@@ -32,7 +32,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      allEvents: [],
       accessToken: null,
       isLoggedIn: false,
     };
@@ -43,12 +42,6 @@ class App extends Component {
     this.setState({
       isLoggedIn: true,
       accessToken: access_token,
-    });
-  };
-
-  handleOnSubmit = data => {
-    this.setState({
-      allEvents: data,
     });
   };
 
