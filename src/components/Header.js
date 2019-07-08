@@ -8,7 +8,7 @@ const Header = () => {
       <Grid-x className="display">
         <Cell>
           <h1 className="text-center">
-            A simple app to find meetups happening in your area!
+            A simple app to find upcoming meetups in your area!
           </h1>
         </Cell>
       </Grid-x>

@@ -9,10 +9,13 @@
 // --- save search string as state in SearchForm.js
 // 4. If nothing is typed and user hits submit, don't make API call and display error1
 // --- error1 stored in state in SearchForm.js
-// 5. If something is typed, make API call but if there are no results matching the search param, display error2
+// 5. If something is typed, make API call but if there are no results matching the search param (ie. []= empty or ERROR), display error2
 // --- conditionally render DisplayResults.js but with error2 (stored in state in DisplayResults)
-// 6. If no errors displays results as cards
-// ---
+// --- store result of API call as state in App.js to pass to ResultCard.js
+// 6. If no errors, displays results (as cards) on page
+// --- Filter through API data and pick out selected info needed and save as state= name/date/time/location/img
+// --- if no event img, display group img, if no img at all, display placeholder
+// --- Map through and
 // --- DisplayResults.js renders all the cards
 // OTHER
 // Persisting the token and detecting expired tokens/refreshing the token
@@ -22,7 +25,6 @@ import React, { Component, Fragment } from 'react';
 import Header from './components/Header.js';
 import Login from './components/Login.js';
 import SearchForm from './components/SearchForm.js';
-import FilterCategories from './components/FilterCategories.js';
 import DisplayResults from './components/DisplayResults.js';
 import Footer from './components/Footer.js';
 
@@ -30,9 +32,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      allEvents: [],
       accessToken: null,
       isLoggedIn: false,
-      isLoading: true,
     };
   }
 
@@ -41,6 +43,12 @@ class App extends Component {
     this.setState({
       isLoggedIn: true,
       accessToken: access_token,
+    });
+  };
+
+  handleOnSubmit = data => {
+    this.setState({
+      allEvents: data,
     });
   };
 
@@ -53,7 +61,6 @@ class App extends Component {
         ) : (
           <Fragment>
             <SearchForm accessToken={this.state.accessToken} />
-            <FilterCategories />
             <DisplayResults />
           </Fragment>
         )}

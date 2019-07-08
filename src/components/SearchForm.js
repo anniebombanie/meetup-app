@@ -14,7 +14,7 @@ class SearchForm extends Component {
     super();
     this.state = {
       search: '',
-      // error: false,
+      hasErrorNoInput: false,
     };
   }
 
@@ -30,10 +30,10 @@ class SearchForm extends Component {
     console.log(`getEvents called`);
     console.log('in getEvents', this.props.accessToken, this.state.search);
 
-    const param = await axios.get(
+    const res = await axios.get(
       `https://api.meetup.com/find/upcoming_events?access_token=${this.props.accessToken}&text=${this.state.search}`
     );
-    console.log(param.data.events);
+    console.log(res, res.data.events);
     return;
   };
 
