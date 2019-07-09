@@ -4,13 +4,6 @@ import 'foundation-sites/dist/css/foundation.min.css';
 import { Grid, Cell, Button, Colors } from 'react-foundation';
 
 class Login extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-
-  //   };
-  // }
-
   login = async () => {
     //oAuth key requested from meetup.com specifically for this app
     const key = 'c7q0307j9q682rd677e2v7r841';

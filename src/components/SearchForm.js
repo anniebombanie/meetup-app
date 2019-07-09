@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import 'foundation-sites/dist/css/foundation.min.css';
 import { Grid, Cell, Button, Colors } from 'react-foundation';
-import { variableDeclarator } from '@babel/types';
-
-// checks that user types something in the search field
-const validText = text => {
-  //returns true if user doesn't type empty spaces
-  return !!text.trim().length;
-};
+import { variableDeclarator, validate } from '@babel/types';
 
 class SearchForm extends Component {
   constructor() {
@@ -19,12 +13,13 @@ class SearchForm extends Component {
     };
   }
 
-  validateSearch = ( )=> {
-    const validSearch = validText,
-    if (!validSearch) {
+  validateSearch = () => {
+    console.log(this.state.search);
+    if (!this.state.search) {
       this.setState({
         hasErrorNoInput: true,
-      })
+      });
+      console.log('inside validate', this.state.hasErrorNoInput);
     }
   };
 
@@ -48,7 +43,7 @@ class SearchForm extends Component {
   onSubmit = e => {
     // prevent default refresh
     e.preventDefault();
-    this.getEventsData();
+    this.validateSearch();
   };
 
   // SubmitButton = () => {
