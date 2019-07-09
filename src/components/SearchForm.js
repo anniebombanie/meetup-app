@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import 'foundation-sites/dist/css/foundation.min.css';
 import { Grid, Cell, Button, Colors } from 'react-foundation';
+import { variableDeclarator } from '@babel/types';
 
-// // checks that user types something in the search field
+// checks that user types something in the search field
 const validText = text => {
   //returns true if user doesn't type empty spaces
   return !!text.trim().length;
@@ -17,6 +18,15 @@ class SearchForm extends Component {
       hasErrorNoInput: false,
     };
   }
+
+  validateSearch = ( )=> {
+    const validSearch = validText,
+    if (!validSearch) {
+      this.setState({
+        hasErrorNoInput: true,
+      })
+    }
+  };
 
   // reusable method to watch user input and update state
   handleChange = e => {

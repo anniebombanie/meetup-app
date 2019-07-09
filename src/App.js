@@ -20,12 +20,12 @@ class App extends Component {
       accessToken: access_token,
       isLoggedIn: true,
     });
-    //only change isLoggedIn to true once accessToken is truthy
-    if (this.state.accessToken) {
-      this.setState({
-        isLoggedIn: true,
-      });
-    }
+    //only change isLoggedIn to true once accessToken is truthy (currently not working- was before)
+    // if (this.state.accessToken) {
+    //   this.setState({
+    //     isLoggedIn: true,
+    //   });
+    // }
   };
 
   render() {
