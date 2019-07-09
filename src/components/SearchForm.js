@@ -13,6 +13,15 @@ class SearchForm extends Component {
     };
   }
 
+  // reusable method to watch user input and update state
+  handleChange = e => {
+    this.setState({
+      // in this instance, when user types something in "search", the value they type in is stored in state
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // make sure search field is valid
   validateSearch = () => {
     console.log(this.state.search);
     if (!this.state.search) {
@@ -23,15 +32,15 @@ class SearchForm extends Component {
     }
   };
 
-  // reusable method to watch user input and update state
-  handleChange = e => {
-    this.setState({
-      // in this instance, when user types something in "search", the value they type in is stored in state
-      [e.target.name]: e.target.value,
-    });
+  // if searchform is valid, make API call
+  callApi = () => {
+    console.log('inside callAPI', this.state.hasErrorNoInput);
+    if (this.state.hasErrorNoInput) {
+      this.getEventsData();
+    }
   };
 
-  // make API call
+  // make data from API
   getEventsData = async () => {
     let res = await axios.get(
       `https://api.meetup.com/find/upcoming_events?access_token=${this.props.accessToken}&text=${this.state.search}`
@@ -44,6 +53,7 @@ class SearchForm extends Component {
     // prevent default refresh
     e.preventDefault();
     this.validateSearch();
+    this.callApi();
   };
 
   // SubmitButton = () => {
