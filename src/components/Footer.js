@@ -6,8 +6,8 @@ const Footer = () => {
   return (
     <footer>
       <Grid>
-        <Cell className="text-center" small={10} medium={8} large={4}>
-          <p>
+        <Cell small={10} medium={8} large={4}>
+          <p className="text-center">
             Created by{' '}
             <a
               href="http://www.anniebombanie.com"
