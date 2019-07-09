@@ -31,7 +31,7 @@ class MainContent extends Component {
           accessToken={this.props.accessToken}
         />
         {this.state.isLoading && (
-          <DisplayResults allEvents={this.state.allEventsData} />
+          <DisplayResults allEventsData={this.state.allEventsData} />
         )}
       </div>
     );

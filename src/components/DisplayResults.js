@@ -10,17 +10,6 @@ class DisplayResults extends Component {
     };
   }
 
-  filterAll;
-  // map through data and filter for correct info
-  //store in state here
-  // passes info to EventCard
-  // showIsLoading () => {
-  //   // if there's nothing returned from the data...
-  //   if (this.props.allEventsData === 0) {
-  //     <p></p>
-  //   }
-  // }
-
   render() {
     if (this.props.allEventsData.length === 0) {
       return (
@@ -30,10 +19,9 @@ class DisplayResults extends Component {
         </p>
       );
     }
-    return this.props.results.map(data => {
-      return (
-        <EventCard event={this.state.event} eventID={this.state.event.id} />
-      );
+    return this.props.allEventsData.map(i => {
+      // unique key is needed for each individual child
+      return <EventCard key={i.id} i={i} tabIndex="0" />;
     });
   }
 }
