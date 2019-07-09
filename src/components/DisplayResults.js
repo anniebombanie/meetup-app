@@ -5,7 +5,7 @@ class DisplayResults extends Component {
   constructor() {
     super();
     this.state = {
-      hasErrorBadInput: false,
+      event: {},
     };
   }
 
