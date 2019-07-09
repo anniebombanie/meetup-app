@@ -9,7 +9,7 @@ class SearchForm extends Component {
     super();
     this.state = {
       search: '',
-      hasErrorNoInput: false,
+      hasNoInput: false,
     };
   }
 
@@ -23,20 +23,18 @@ class SearchForm extends Component {
 
   // make sure search field is valid
   validateSearch = () => {
-    console.log(this.state.search);
+    // if search is falsy (ie. nothing there)
     if (!this.state.search) {
+      // then set state of error to true
       this.setState({
-        hasErrorNoInput: true,
+        hasNoInput: true,
       });
-      console.log('inside validate', this.state.hasErrorNoInput);
-      this.callApi();
-    }
-  };
-
-  // if searchform is valid, make API call
-  callApi = () => {
-    console.log('inside callAPI', this.state.hasErrorNoInput);
-    if (this.state.hasErrorNoInput) {
+    } else {
+      // if there was an error below, now clears error message
+      this.setState({
+        hasNoInput: false,
+      });
+      // calls API when no error
       this.getEventsData();
     }
   };
@@ -77,8 +75,17 @@ class SearchForm extends Component {
                 placeholder="ie. food, design, boardgames"
                 onChange={this.handleChange}
                 value={this.state.search}
+                onBlur={this.validateSearch}
               />
             </Cell>
+            {this.state.hasNoInput && (
+              <Cell>
+                <p>
+                  Ooops! Please type something so we can find what you're
+                  looking for!
+                </p>
+              </Cell>
+            )}
             <Cell>
               <button onClick={this.onSubmit} className="button expanded">
                 Find Events
