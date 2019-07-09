@@ -26,7 +26,7 @@ class ResultCard extends Component {
     return (
       <div className="resultCard">
         {/* <img src={} alt={}> */}
-        <h3>Event name {this.props.event.name}</h3>
+        <h3>{this.props.event.name}</h3>
         {/* <p>Id {this.props.event.id}</p> */}
         {this.props.event.venue && (
           <p>
@@ -37,7 +37,7 @@ class ResultCard extends Component {
           {this.props.event.local_date} at {this.props.event.local_time}
         </p>
         <p>
-          <a href="{this.props.event.link}">More Info</a>
+          <a href={this.props.event.link}>More Info</a>
         </p>
         {/* <p>urlname {this.props.event.group.urlname}</p> */}
       </div>

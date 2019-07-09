@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import 'foundation-sites/dist/css/foundation.min.css';
-import { Grid, Cell, Button, Colors } from 'react-foundation';
+import { Grid, Cell, Callout, Colors } from 'react-foundation';
 import { variableDeclarator, validate } from '@babel/types';
 
 class SearchForm extends Component {
@@ -79,12 +79,12 @@ class SearchForm extends Component {
               />
             </Cell>
             {this.state.hasNoInput && (
-              <Cell>
+              <Callout color={Colors.ALERT}>
                 <p>
-                  Ooops! Please type something so we can find what you're
-                  looking for!
+                  Ooops! Please type something in the search field above! For
+                  example, "hiking".
                 </p>
-              </Cell>
+              </Callout>
             )}
             <Cell>
               <button onClick={this.onSubmit} className="button expanded">

@@ -26,7 +26,7 @@ class Login extends Component {
   render() {
     return (
       <Grid className="display">
-        <Cell>
+        <Cell small={11} centerOnSmall>
           <p>
             <strong>
               This app requires you to have a meetup.com account to access event

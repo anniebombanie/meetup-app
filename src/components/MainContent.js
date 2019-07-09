@@ -7,8 +7,8 @@ class MainContent extends Component {
     super();
     this.state = {
       allEventsData: [],
-      isLoading: false,
-      hasErrorBadInput: false,
+      displayResults: false,
+      isLoading: true,
     };
   }
 
@@ -17,8 +17,8 @@ class MainContent extends Component {
     this.setState({
       // stores API data
       allEventsData: data,
-      // changes is loading to true
-      isLoading: true,
+      displayResults: true,
+      isLoading: false,
     });
     console.log(data);
   };
@@ -30,12 +30,15 @@ class MainContent extends Component {
           handleOnSubmit={this.handleOnSubmit}
           accessToken={this.props.accessToken}
         />
-        {this.state.isLoading && (
-          <DisplayResults
-            allEventsData={this.state.allEventsData}
-            accessToken={this.props.accessToken}
-          />
-        )}
+        {this.state.displayResults &&
+          (this.state.isLoading ? (
+            <p>Getting your results...</p>
+          ) : (
+            <DisplayResults
+              allEventsData={this.state.allEventsData}
+              accessToken={this.props.accessToken}
+            />
+          ))}
       </div>
     );
   }
