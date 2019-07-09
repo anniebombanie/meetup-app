@@ -5,7 +5,6 @@ class DisplayResults extends Component {
   constructor() {
     super();
     this.state = {
-      event: [],
       hasErrorBadInput: false,
     };
   }
@@ -27,6 +26,7 @@ class DisplayResults extends Component {
           event={event}
           tabIndex="0"
           allEventsData={this.state.event}
+          accessToken={this.props.accessToken}
         />
       );
     });

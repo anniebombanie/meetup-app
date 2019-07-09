@@ -28,7 +28,7 @@ class SearchForm extends Component {
 
   // make API call
   getEventsData = async () => {
-    const res = await axios.get(
+    let res = await axios.get(
       `https://api.meetup.com/find/upcoming_events?access_token=${this.props.accessToken}&text=${this.state.search}`
     );
     // pass response data to handleOnSubmit to store in MainContent.js
