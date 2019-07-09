@@ -35,7 +35,6 @@ class DisplayResults extends Component {
                 <Cell small={10} medium={8}>
                   <EventCard
                     event={event}
-                    key={event.id}
                     tabIndex="0"
                     allEventsData={this.state.event}
                     accessToken={this.props.accessToken}

@@ -7,8 +7,8 @@ class Login extends Component {
   login = async () => {
     //oAuth key requested from meetup.com specifically for this app
     const key = 'c7q0307j9q682rd677e2v7r841';
-    //redirectUri = set in the configuration of oath token; 'http:localhost:3000' while deving and 'https://anniebombanie.github.io/meetup-search/' once deployed
-    const redirectUri = 'https://anniebombanie.github.io/meetup-search/';
+    //redirectUri = set in the configuration of oath token; 'http://localhost:3000' while deving and 'https://anniebombanie.github.io/meetup-search/' once deployed
+    const redirectUri = 'http://localhost:3000';
     console.log(redirectUri);
 
     // popback kudos to Jeffrey B [https://www.npmjs.com/package/popback]
@@ -21,6 +21,7 @@ class Login extends Component {
     // pass param.access_token up to App.js
     // need param because otherwise, will return key-value pair instead of just value
     this.props.handleLogin(param.access_token);
+    console.log(key);
   };
 
   render() {
