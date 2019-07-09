@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import 'foundation-sites/dist/css/foundation.min.css';
 import { Grid, Cell, Callout, Colors } from 'react-foundation';
-import { variableDeclarator, validate } from '@babel/types';
 
 class SearchForm extends Component {
   constructor() {
@@ -62,9 +61,13 @@ class SearchForm extends Component {
     return (
       <div className="searchForm">
         <form>
-          <Grid className="display">
-            <Cell>
-              <p>You are currently loggedIn yay!</p>
+          <Grid className="display align-center">
+            <Cell small={10} medium={8}>
+              <Callout color={Colors.SECONDARY}>
+                <p className="text-center">You are currently loggedIn yay!</p>
+              </Callout>
+            </Cell>
+            <Cell small={10} medium={8}>
               <label htmlFor="search">
                 What kind of meetups are you looking for?
               </label>
@@ -79,14 +82,16 @@ class SearchForm extends Component {
               />
             </Cell>
             {this.state.hasNoInput && (
-              <Callout color={Colors.ALERT}>
-                <p>
-                  Ooops! Please type something in the search field above! For
-                  example, "hiking".
-                </p>
-              </Callout>
+              <Cell small={10} medium={8}>
+                <Callout color={Colors.ALERT}>
+                  <p>
+                    Ooops! Please type something in the search field above! For
+                    example, "hiking".
+                  </p>
+                </Callout>
+              </Cell>
             )}
-            <Cell>
+            <Cell small={10} medium={8}>
               <button onClick={this.onSubmit} className="button expanded">
                 Find Events
               </button>

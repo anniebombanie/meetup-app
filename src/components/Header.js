@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header>
       <Grid className="display align-center">
-        <Cell small={6} medium={8}>
+        <Cell small={10} medium={8}>
           <h1 className="text-center">
             A simple app to find upcoming meetups in your area!
           </h1>

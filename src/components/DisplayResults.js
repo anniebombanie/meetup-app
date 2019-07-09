@@ -14,32 +14,39 @@ class DisplayResults extends Component {
   render() {
     if (this.props.allEventsData.length === 0) {
       return (
-        <Callout color={Colors.ALERT}>
-          <p>
-            Sorry, your search didn't return any events. Please try a different
-            search.
-          </p>
-        </Callout>
+        <Grid className="display align-center">
+          <Cell small={10} medium={8}>
+            <Callout color={Colors.ALERT}>
+              <p>
+                Sorry, your search didn't return any events. Please try a
+                different search.
+              </p>
+            </Callout>
+          </Cell>
+        </Grid>
+      );
+    } else {
+      return (
+        <Grid className="display align-center">
+          {this.props.allEventsData.map(event => {
+            // unique key is needed for each individual child
+            return (
+              <div>
+                <Cell small={10} medium={8}>
+                  <EventCard
+                    event={event}
+                    key={event.id}
+                    tabIndex="0"
+                    allEventsData={this.state.event}
+                    accessToken={this.props.accessToken}
+                  />
+                </Cell>
+              </div>
+            );
+          })}
+        </Grid>
       );
     }
-    return this.props.allEventsData.map(event => {
-      // unique key is needed for each individual child
-      return (
-        <div>
-          <Grid upOnSmall={1} upOnMedium={2} upOnLarge={4}>
-            <Cell isColumn>
-              <EventCard
-                key={event.id}
-                event={event}
-                tabIndex="0"
-                allEventsData={this.state.event}
-                accessToken={this.props.accessToken}
-              />
-            </Cell>
-          </Grid>
-        </div>
-      );
-    });
   }
 }
 

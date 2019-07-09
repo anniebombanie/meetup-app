@@ -26,7 +26,7 @@ class Login extends Component {
   render() {
     return (
       <Grid className="display align-center">
-        <Cell small={6} medium={8}>
+        <Cell className="text-small-centered" small={10} medium={8}>
           <p>
             <strong>
               This app requires you to have a meetup.com account to access event
@@ -40,7 +40,7 @@ class Login extends Component {
           </p>
           <form className="text-center">
             <button
-              className="button"
+              className="button small-expanded"
               onClick={() => {
                 this.login();
                 this.props.handleLogin();
