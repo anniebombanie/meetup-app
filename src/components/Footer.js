@@ -16,9 +16,9 @@ const Footer = () => {
         </a>{' '}
         | Using the{' '}
         <a
-          href="https://developer.ticketmaster.com/products-and-docs/apis/getting-started/"
+          href="https://www.meetup.com/en-AU/meetup_api/"
           target="_blank"
-          aria-label="go to Ticketmaster's API website"
+          aria-label="go to Meetup.com API website"
           rel="noopener noreferrer"
         >
           Meetup.com

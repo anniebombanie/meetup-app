@@ -8,9 +8,10 @@ class ResultCard extends Component {
       image: '',
     };
   }
-  componentDidMount() {
-    this.getImages();
-  }
+
+  // componentDidMount() {
+  //   this.getImages();
+  // }
 
   //GET IMAGES CURRENTLY RESULTING IN CORS ERROR: (Reason: CORS header “Access-Control-Allow-Origin” missing)
   // getImages = async () => {
@@ -27,10 +28,14 @@ class ResultCard extends Component {
         {/* <img src={} alt={}> */}
         <h3>Event name {this.props.event.name}</h3>
         {/* <p>Id {this.props.event.id}</p> */}
-        <p>Date {this.props.event.local_date}</p>
-        <p>Time {this.props.event.local_time}</p>
-        {this.props.event.venue && <p>Venue {this.props.event.venue.name}</p>}
-        {this.props.event.venue && <p>City {this.props.event.venue.city}</p>}
+        {this.props.event.venue && (
+          <p>
+            {this.props.event.venue.name}, {this.props.event.venue.city}
+          </p>
+        )}
+        <p>
+          {this.props.event.local_date} at {this.props.event.local_time}
+        </p>
         <p>
           <a href="{this.props.event.link}">More Info</a>
         </p>

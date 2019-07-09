@@ -14,7 +14,7 @@ class MainContent extends Component {
 
   // sets states when search button is clicked
   handleOnSubmit = data => {
-    console.log('handleOnSubmit', this.props.accessToken);
+    // console.log('handleOnSubmit', this.props.accessToken);
     this.setState({
       // stores API data
       allEventsData: data,
