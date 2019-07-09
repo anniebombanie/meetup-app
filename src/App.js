@@ -18,6 +18,7 @@ class App extends Component {
   handleLogin = access_token => {
     this.setState({
       accessToken: access_token,
+      isLoggedIn: true,
     });
     //only change isLoggedIn to true once accessToken is truthy
     if (this.state.accessToken) {

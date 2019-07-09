@@ -4,10 +4,10 @@ import 'foundation-sites/dist/css/foundation.min.css';
 import { Grid, Cell, Button, Colors } from 'react-foundation';
 
 // // checks that user types something in the search field
-// const validText = text => {
-//   //returns true if user doesn't type empty spaces
-//   return !!text.trim().length;
-// };
+const validText = text => {
+  //returns true if user doesn't type empty spaces
+  return !!text.trim().length;
+};
 
 class SearchForm extends Component {
   constructor() {
