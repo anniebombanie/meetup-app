@@ -1,9 +1,11 @@
 import React from 'react';
 
-let ResultCard = () => {
+let ResultCard = props => {
   return (
-    <div>
-      <p>Result Card</p>
+    <div className="resultCard">
+      <p>Event Card</p>
+      <h3>{props.event.group.name}</h3>
+      <p>{props.event.id}</p>
     </div>
   );
 };

@@ -19,9 +19,16 @@ class DisplayResults extends Component {
         </p>
       );
     }
-    return this.props.allEventsData.map(i => {
+    return this.props.allEventsData.map(event => {
       // unique key is needed for each individual child
-      return <EventCard key={i.id} i={i} tabIndex="0" />;
+      return (
+        <EventCard
+          key={event.id}
+          event={event}
+          tabIndex="0"
+          allEventsData={this.state.event}
+        />
+      );
     });
   }
 }
