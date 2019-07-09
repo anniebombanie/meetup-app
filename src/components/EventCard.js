@@ -37,7 +37,14 @@ class ResultCard extends Component {
           {this.props.event.local_date} at {this.props.event.local_time}
         </p>
         <p>
-          <a href={this.props.event.link}>More Info</a>
+          <a
+            href={this.props.event.link}
+            target="_blank"
+            aria-label="go to event page on Meetup.com"
+            rel="noopener noreferrer"
+          >
+            More Info
+          </a>
         </p>
         {/* <p>urlname {this.props.event.group.urlname}</p> */}
       </div>

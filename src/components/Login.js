@@ -25,8 +25,8 @@ class Login extends Component {
 
   render() {
     return (
-      <Grid className="display">
-        <Cell small={11} centerOnSmall>
+      <Grid className="display align-center">
+        <Cell small={6} medium={8}>
           <p>
             <strong>
               This app requires you to have a meetup.com account to access event
@@ -38,7 +38,7 @@ class Login extends Component {
             prompted to create one to continue. (This will open up a new tab or
             popup depending on your browser.)
           </p>
-          <form>
+          <form className="text-center">
             <button
               className="button"
               onClick={() => {
