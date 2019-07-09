@@ -29,6 +29,7 @@ class SearchForm extends Component {
         hasErrorNoInput: true,
       });
       console.log('inside validate', this.state.hasErrorNoInput);
+      this.callApi();
     }
   };
 
@@ -53,7 +54,6 @@ class SearchForm extends Component {
     // prevent default refresh
     e.preventDefault();
     this.validateSearch();
-    this.callApi();
   };
 
   // SubmitButton = () => {
