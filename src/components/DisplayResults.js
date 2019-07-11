@@ -31,7 +31,7 @@ class DisplayResults extends Component {
           {this.props.allEventsData.map(event => {
             // unique key is needed for each individual child
             return (
-              <div>
+              <div key={this.event.id}>
                 <Cell small={10} medium={8}>
                   <EventCard
                     event={event}
